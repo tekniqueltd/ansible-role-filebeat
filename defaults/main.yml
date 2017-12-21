@@ -1,5 +1,6 @@
 ---
 filebeat_create_config: true
+filebeat_major_version: 6
 
 filebeat_prospectors:
   - input_type: log
