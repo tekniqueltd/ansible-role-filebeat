@@ -1,8 +1,7 @@
-{{ filebeat_extra_configuration|to_nice_yaml }}
+{% if filebeat_extra_configuration is defined %}{{ filebeat_extra_configuration|to_yaml }}{% endif %}
 filebeat:
   # List of prospectors to fetch data.
-  prospectors:
-    {{ filebeat_prospectors | to_json }}
+  prospectors: {{ filebeat_prospectors|to_json }}
 
 # Configure what outputs to use when sending the data collected by the beat.
 # Multiple outputs may be used.

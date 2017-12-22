@@ -25,4 +25,4 @@ filebeat_ssl_certificate_file: ""
 filebeat_ssl_key_file: ""
 filebeat_ssl_insecure: "false"
 
-filebeat_extra_configuration: {}
+#filebeat_extra_configuration: {}
