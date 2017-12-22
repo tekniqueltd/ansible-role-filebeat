@@ -7,6 +7,7 @@
 
 - name: Install Filebeat.
   package: name=filebeat state=present
+  become: yes
 
 - include: config.yml
   when: filebeat_create_config
@@ -16,3 +17,4 @@
     name: filebeat
     state: started
     enabled: yes
+  become: yes
