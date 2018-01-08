@@ -131,20 +131,15 @@ output:
       #curve_types: []
 {% endif %}
 
-{% if filebeat_enable_logging %}
+{% if filebeat_logging|bool %}
 logging:
   ### Filebeat log
   level: {{ filebeat_log_level }}
 
   # Enable file rotation with default configuration
-  to_files: true
+  to_files: {{ filebeat_log_to_files|bool|string|lower }}
 
-  # Do not log to syslog
-  to_syslog: false
-
-  files:
-    path: {{ filebeat_log_dir }}
-    name: {{ filebeat_log_filename }}
-    keepfiles: 7
+  # log to syslog
+  to_syslog: {{ filebeat_log_to_syslog|bool|string|lower }}
 {% endif %}
 {% endif %}
