@@ -2,12 +2,16 @@
 - name: Ensure dependency is installed (Ubuntu).
   apt: name=apt-transport-https state=present
   become: yes
+  tags:
+    - filebeat
 
 - name: Add Elasticsearch apt key.
   apt_key:
     url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
     state: present
   become: yes
+  tags:
+    - filebeat
 
 - name: Add Filebeat repository.
   apt_repository:
@@ -15,3 +19,5 @@
     state: present
     update_cache: yes
   become: yes
+  tags:
+    - filebeat

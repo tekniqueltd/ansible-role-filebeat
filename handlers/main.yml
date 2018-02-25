@@ -2,3 +2,5 @@
 - name: restart filebeat
   service: name=filebeat state=restarted
   become: yes
+  tags:
+    - filebeat
