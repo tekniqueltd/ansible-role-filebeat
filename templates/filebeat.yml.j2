@@ -23,7 +23,9 @@ output:
 
     # Optional index name. The default is "filebeat" and generates
     # [filebeat-]YYYY.MM.DD keys.
-    #index: "filebeat"
+{% if filebeat_output_elasticsearch_index is defined %}
+    index: {{ filebeat_output_elasticsearch_index }}
+{% endif %}
 
     # Optional HTTP Path
     #path: "/elasticsearch"
@@ -130,6 +132,7 @@ output:
       # Configure curve types for ECDHE based cipher suites
       #curve_types: []
 {% endif %}
+{% endif %}
 
 {% if filebeat_logging|bool %}
 logging:
@@ -141,5 +144,4 @@ logging:
 
   # log to syslog
   to_syslog: {{ filebeat_log_to_syslog|bool|string|lower }}
-{% endif %}
 {% endif %}
